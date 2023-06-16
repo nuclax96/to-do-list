@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+* {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#content {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: minmax(225px, 20%) 80%;
+  grid-template-rows: 50px 1fr 30px;
+}
+
+header {
+  display: flex;
+  justify-content: flex-start;
+  background-image: linear-gradient(to right, #6096b4, #ec52e5);
+  grid-column: 1/3;
+}
+.logoContainerHeader {
+  display: flex;
+  align-items: center;
+}
+.headingLogo {
+  color: #eeeeee;
+  font-size: 20px;
+  padding-left: 20px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  background-color: #e6e5e5;
+  grid-column: 1/2;
+  border-right: 2px solid #e0e2e4;
+  gap: 35px;
+  border-right: 1px solid rgb(202, 199, 199);
+  z-index: 10;
+  box-shadow: 3px 1px 6px -6px #202020;
+}
+.taskNavContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+  width: 90%;
+  /* background-color: #ec52e5; */
+}
+
+.projectNavContainer {
+  width: 90%;
+  height: 250px;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  align-items: center;
+}
+.projectNavContainer::-webkit-scrollbar {
+  width: 10px;
+}
+
+.projectNavContainer::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #e7e7e7;
+  border: 1px solid #cacaca;
+}
+
+.projectNavContainer::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #d55959;
+}
+.projectNavHeading {
+  padding: 10px;
+  padding-top: 0px;
+}
+
+.taskNavContainer:after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.363);
+  top: 110%;
+  width: 75%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.linkNav {
+  text-decoration: none;
+  padding: 12px 20px;
+  color: black;
+  background-color: rgb(255, 255, 255);
+  width: 80%;
+  border-radius: 5px;
+  color: #3e3f3f;
+}
+
+.linkNav.selected {
+  background-color: rgb(56, 113, 235);
+}
+
+.linkNav:hover {
+  color: white;
+  background-color: rgb(56, 113, 235);
+}
+
+main {
+  display: grid;
+  grid-template-rows: 100px 50px auto;
+  background-color: #eeeeee;
+  grid-column: 2/3;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.76);
+  z-index: 100;
+}
+.modalContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  width: 50%;
+  padding: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 5px;
+  gap: 20px;
+}
+.taskModalContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.taskModalContainer input {
+  /* display: block; */
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+}
+.mainHeadingContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  justify-content: center;
+  align-items: center;
+  color: #6e6e6e;
+  padding: 10px;
+}
+.addTaskBtn {
+  width: 50%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgb(192, 189, 189);
+  font-size: 18px;
+  margin-left: 100px;
+  color: rgb(13, 37, 102);
+  background-color: rgb(243, 157, 243);
+  transition: all 400ms ease;
+}
+
+.addTaskBtn:hover {
+  color: white;
+  background-color: rgb(46, 87, 199);
+}
+
+.taskHeadingContainer {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.tasksContainer {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(50px, 70px));
+}
+.taskContainer {
+  color: #3d3939;
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  transition: all 400ms ease-out;
+  padding-left: 10px;
+  justify-content: center;
+}
+
+.taskContainer:hover {
+  background-color: #ced8fa;
+}
+.addIcon,
+.addTaskIcon {
+  width: 20%;
+  min-width: 15%;
+  height: auto;
+  transition: all 100ms ease-in;
+}
+.addIcon:hover {
+  transform: scale(1.25);
+  height: auto;
+}
+footer {
+  grid-area: "footer";
+  background-color: #eeeeee;
+  grid-column: 1/3;
+  border-top: 2px solid #a8afb3;
+}
