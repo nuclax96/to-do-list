@@ -7,8 +7,9 @@ import {
 } from "./modules/domHandler/nav/populateNav";
 import { fillMainContainer } from "./modules/domHandler/main/populateMain";
 import { createProject } from "./modules/dataHandler/projectNavHandler";
-import { createTask } from "./modules/dataHandler/taskHandler";
+import taskDataHandler, { createTask } from "./modules/dataHandler/task";
 import createTaskContainer from "./modules/domHandler/main/addTaskModal";
+import { eventsListener } from "./modules/eventListeners";
 
 const projectsArr = [];
 const taskArr = [];
@@ -20,12 +21,15 @@ const loadElements = function () {
   fillMainContainer();
   fillProjectsContainer();
   createProject(projectsArr);
-  createTask();
+  createModal();
+  createTaskContainer();
+
+  // show tasks on inital load
+  taskDataHandler.displayTask();
 };
 
 const initializeListeners = function () {
-  createModal();
-  createTaskContainer();
+  eventsListener.taskListeners();
 };
 
 loadElements();

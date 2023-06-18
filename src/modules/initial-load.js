@@ -13,8 +13,10 @@ const initalHtmlLoad = function () {
 const createModal = function () {
   const modal = createDiv("modal");
   const mainContainer = document.querySelector("main");
-
+  modal.classList.add("hidden");
   mainContainer.append(modal);
 };
+
+const loadTasks = function () {};
 
 export { initalHtmlLoad, createModal };

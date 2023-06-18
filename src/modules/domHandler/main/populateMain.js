@@ -18,16 +18,16 @@ const createTaskDiv = function (
   const taskContainer = createDiv("taskContainer");
   const name = createParagraph(taskName, "taskName");
   const dueDate = createParagraph(taskDueDate, "taskDueDate");
-  const completed = createParagraph("false", "taskCompletedInd");
   const createDate = createParagraph(taskCreatedDate, "taskCreateDate");
+  const completed = createParagraph(taskCompleted, "taskCompletedInd");
   const editIcon = createImage(iconEdit, "addIcon");
   const deleteIcon = createImage(iconDelete, "addIcon");
-  console.log(createDate);
+  deleteIcon.classList.add("taskDeleteBtn");
   taskContainer.append(
     name,
+    createDate,
     dueDate,
     completed,
-    createDate,
     editIcon,
     deleteIcon
   );
@@ -36,15 +36,41 @@ const createTaskDiv = function (
 
 const fillTaskContainer = function (taskArr) {
   const tasksContatiner = document.querySelector(".tasksContainer");
+  tasksContatiner.textContent = "";
+  if (!taskArr) return;
+  console.log(taskArr);
   taskArr.forEach((item) => {
     const taskDiv = createTaskDiv(
-      item.taskName,
-      item.createdDate,
-      item.dueDate,
-      item.completed
+      item._title,
+      item._createDate,
+      item._dueDate,
+      item._completed
     );
+    taskDiv.dataset["id"] = item._id;
     tasksContatiner.append(taskDiv);
   });
+};
+
+// const addTask = function (taskArr) {
+//   const tasksContatiner = document.querySelector(".tasksContainer");
+//   tasksContatiner.textContent = "";
+//   if (!taskArr) return;
+//   console.log(taskArr);
+//   taskArr.forEach((item) => {
+//     const taskDiv = createTaskDiv(
+//       item._title,
+//       item._createDate,
+//       item._dueDate,
+//       item._completed
+//     );
+//     taskDiv.dataset["id"] = item._id;
+//     tasksContatiner.append(taskDiv);
+//   });
+// }
+const deleteTaskUsingId = function (id) {
+  const taskDiv = document.querySelector(`[data-id=${id}]`);
+  const taskContainer = document.querySelector(".tasksContainer");
+  taskContainer.removeChild(taskDiv);
 };
 
 const fillMainContainer = function () {
@@ -76,4 +102,4 @@ const fillMainContainer = function () {
   mainContainer.append(headingContainer, taskHeadingContainer, taskContainer);
 };
 
-export { fillMainContainer, fillTaskContainer };
+export { fillMainContainer, fillTaskContainer, deleteTaskUsingId };

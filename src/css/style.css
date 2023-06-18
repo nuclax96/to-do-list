@@ -174,9 +174,24 @@ main {
   transition: all 400ms ease;
 }
 
+.hidden {
+  opacity: 0;
+  z-index: -100;
+}
+
 .addTaskBtn:hover {
   color: white;
   background-color: rgb(46, 87, 199);
+}
+.taskModalHeadingContainer {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 90% auto;
+  /* justify-content: space-around; */
+}
+.modalHeading {
+  justify-self: center;
+  margin-left: 25px;
 }
 
 .taskHeadingContainer {
