@@ -3,14 +3,14 @@ import { fillTaskContainer } from "../domHandler/main/populateMain";
 import { Task } from "../model/task";
 import localStorageFunctions from "../helperFunctions/localStorage";
 import taskModalFunctions from "../domHandler/main/taskModalFunctions";
-export const taskDataHandler = (() => {
+
+const taskDataHandler = (() => {
   const addTask = function () {
     let priority = 5; //default priority set to 5 if not supplied
     // Get task input fields'
     const inputValues = taskModalFunctions.getAddTaskValues();
     priority = inputValues.priority ? inputValues.priority : priority;
     // Create task object
-
     const userTask = new Task(
       inputValues.taskName,
       inputValues.taskDueDate,
@@ -18,21 +18,11 @@ export const taskDataHandler = (() => {
       priority,
       false
     );
-    // Save to local storage
-
-    localStorageFunctions.setLocalStorage("taskArr", userTask);
-    localStorageFunctions.getAllItems("taskArr");
-    //Clear Input Fields
-    taskModalFunctions.clearTaskModalValues();
-    //close the modal
-    taskModalFunctions.hideModal();
-
-    return userTask._id;
+    return userTask;
   };
 
   const displayTask = function () {
     const tasksArr = localStorageFunctions.getAllItems("taskArr");
-
     fillTaskContainer(tasksArr);
   };
 

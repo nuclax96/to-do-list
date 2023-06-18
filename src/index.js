@@ -13,7 +13,6 @@ import { eventsListener } from "./modules/eventListeners";
 
 const projectsArr = [];
 const taskArr = [];
-
 const loadElements = function () {
   initalHtmlLoad();
   fillHeader();

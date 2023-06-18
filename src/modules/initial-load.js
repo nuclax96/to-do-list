@@ -17,6 +17,4 @@ const createModal = function () {
   mainContainer.append(modal);
 };
 
-const loadTasks = function () {};
-
 export { initalHtmlLoad, createModal };

@@ -3,7 +3,6 @@ import { deleteTaskUsingId } from "./domHandler/main/populateMain";
 import taskModalFunctions from "./domHandler/main/taskModalFunctions";
 import { eventsListener } from "./eventListeners";
 import localStorageFunctions from "./helperFunctions/localStorage";
-import { Task } from "./model/task";
 const taskControllerFunctions = (() => {
   const openTaskModal = function () {
     taskModalFunctions.showModal();
@@ -14,7 +13,15 @@ const taskControllerFunctions = (() => {
   const taskSubmitController = function () {};
 
   const addTask = function () {
-    const task_id = taskDataHandler.addTask();
+    const userTask = taskDataHandler.addTask();
+
+    //local storage
+    localStorageFunctions.setLocalStorage("taskArr", userTask);
+    localStorageFunctions.getAllItems("taskArr");
+    //Clear Input Fields
+    taskModalFunctions.clearTaskModalValues();
+    //close the modal
+    taskModalFunctions.hideModal();
     taskDataHandler.displayTask();
     eventsListener.deleteBtnListener();
   };
@@ -23,7 +30,6 @@ const taskControllerFunctions = (() => {
     taskDataHandler.deleteTask("taskArr", id);
     deleteTaskUsingId(id);
   };
-  const displayTasks = function () {};
 
   return {
     taskSubmitController,
@@ -31,7 +37,6 @@ const taskControllerFunctions = (() => {
     closeTaskModal,
     addTask,
     deleteTask,
-    displayTasks,
   };
 })();
 

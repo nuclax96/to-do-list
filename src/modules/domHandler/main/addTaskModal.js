@@ -27,6 +27,9 @@ const createTaskContainer = function () {
   const taskDueDateLabel = createLabel("Due Date", "taskDueDate");
   const submitBtn = createButton("Submit", "btnSubmitTask");
   modalContainer.append(taskHeadingContainer, taskContainer);
+  taskNameInput.required = true;
+  taskCreateDateInput.required = true;
+  taskDueDateInput.required = true;
   taskContainer.append(
     taskNameLabel,
     taskNameInput,
