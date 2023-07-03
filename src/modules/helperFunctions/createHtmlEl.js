@@ -60,10 +60,14 @@ const createInput = function (inputId, nameAttr, type) {
 const createLabel = function (txt, forAttr) {
   const createdEl = document.createElement("label");
   createdEl.textContent = txt;
-
   createdEl.setAttribute("for", forAttr);
-  // btnClass ? createdEl.classList.add(inputClass) : "";
-  //   createdEl.classList.add(imgClass);
+  return createdEl;
+};
+
+const createForm = function (formClassName) {
+  const createdEl = document.createElement("form");
+  createdEl.setAttribute("action", "#");
+  createdEl.classList.add(formClassName);
   return createdEl;
 };
 
@@ -77,4 +81,5 @@ export {
   createButton,
   createInput,
   createLabel,
+  createForm,
 };

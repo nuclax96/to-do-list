@@ -9,7 +9,7 @@
 #content {
   display: grid;
   height: 100vh;
-  grid-template-columns: minmax(225px, 20%) 80%;
+  grid-template-columns: minmax(225px, 25%) auto;
   grid-template-rows: 50px 1fr 30px;
 }
 
@@ -54,7 +54,8 @@ nav {
 }
 
 .projectNavContainer {
-  width: 90%;
+  width: 95%;
+  padding-right: 10px;
   height: 250px;
   /* background-color: aqua; */
   display: flex;
@@ -63,23 +64,41 @@ nav {
   overflow-x: hidden;
   align-items: center;
 }
+
 .projectNavContainer::-webkit-scrollbar {
-  width: 10px;
+  width: 7px;
 }
 
 .projectNavContainer::-webkit-scrollbar-track {
   border-radius: 8px;
+  padding-right: 10px;
   background-color: #e7e7e7;
   border: 1px solid #cacaca;
 }
 
 .projectNavContainer::-webkit-scrollbar-thumb {
   border-radius: 8px;
+  padding-right: 10px;
   background-color: #d55959;
 }
+.projectHeadingContainer {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 70% 30%;
+  justify-content: space-between;
+  margin: 20px 10px;
+  padding: 0px 10px;
+}
+
 .projectNavHeading {
   padding: 10px;
   padding-top: 0px;
+}
+
+.projectsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .taskNavContainer:after {
@@ -116,6 +135,7 @@ main {
   grid-template-rows: 100px 50px auto;
   background-color: #eeeeee;
   grid-column: 2/3;
+  padding-left: 10px;
 }
 
 .modal {
@@ -183,7 +203,8 @@ main {
   color: white;
   background-color: rgb(46, 87, 199);
 }
-.taskModalHeadingContainer {
+.taskModalHeadingContainer,
+.projectModalHeadingContainer {
   display: grid;
   width: 100%;
   grid-template-columns: 90% auto;

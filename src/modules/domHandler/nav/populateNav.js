@@ -2,10 +2,11 @@ import {
   createDiv,
   createLink,
   createHeading,
+  createButton,
 } from "../../helperFunctions/createHtmlEl";
 
 const insertProjectLinks = function (projectsArr) {
-  const projectContatiner = document.querySelector(".projectNavContainer");
+  const projectContatiner = document.querySelector(".projectsContainer");
   projectsArr.forEach((item) => {
     const projectLink = createLink(item.projectName, "linkNav");
     projectContatiner.append(projectLink);
@@ -15,6 +16,9 @@ const insertProjectLinks = function (projectsArr) {
 const fillProjectsContainer = function () {
   const navContainer = document.querySelector("nav");
   const projectNavContainer = createDiv("projectNavContainer");
+  const headingContainer = createDiv("projectHeadingContainer");
+  const projectsContainer = createDiv("projectsContainer");
+  const addProjectBtn = createButton("Add Project", "addProjectBtn");
   const headingProject = createHeading(
     "h3",
     `Projects (${1})`,
@@ -22,7 +26,9 @@ const fillProjectsContainer = function () {
   );
 
   navContainer.append(projectNavContainer);
-  projectNavContainer.append(headingProject);
+  projectNavContainer.append(headingContainer, projectsContainer);
+
+  headingContainer.append(headingProject, addProjectBtn);
 };
 
 const fillNav = function () {

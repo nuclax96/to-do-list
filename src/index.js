@@ -9,7 +9,11 @@ import { fillMainContainer } from "./modules/domHandler/main/populateMain";
 import { createProject } from "./modules/dataHandler/projectNavHandler";
 import taskDataHandler, { createTask } from "./modules/dataHandler/task";
 import createTaskContainer from "./modules/domHandler/main/addTaskModal";
-import { eventsListener } from "./modules/eventListeners";
+import {
+  projectEventListeners,
+  taskEventsListener,
+} from "./modules/eventListeners";
+import createProjectModal from "./modules/domHandler/nav/addProjectModal";
 
 const projectsArr = [];
 const taskArr = [];
@@ -21,14 +25,24 @@ const loadElements = function () {
   fillProjectsContainer();
   createProject(projectsArr);
   createModal();
+  // Task Modal
   createTaskContainer();
+  //
 
   // show tasks on inital load
   taskDataHandler.displayTask();
 };
 
 const initializeListeners = function () {
-  eventsListener.taskListeners();
+  // Task Listeners
+  taskEventsListener.taskListeners();
+  taskEventsListener.taskModalListeners();
+  //
+
+  // Project Listeners
+  projectEventListeners.addProjectBtn();
+
+  //
 };
 
 loadElements();

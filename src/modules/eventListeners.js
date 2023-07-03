@@ -1,18 +1,26 @@
-import { taskControllerFunctions } from "./controller";
+import {
+  projectControllerFunction,
+  taskControllerFunctions,
+} from "./controller";
 import taskDataHandler from "./dataHandler/task";
 
-const eventsListener = (() => {
-  const taskListeners = function () {
-    const addTaskBtn = document.querySelector(".addTaskBtn");
+const taskEventsListener = (() => {
+  const taskModalListeners = function () {
     const submitTaskBtn = document.querySelector(".btnSubmitTask");
     const closeTaskModalBtn = document.querySelector(".closeModal");
-    const deleteTasksBtn = document.querySelectorAll(".taskDeleteBtn");
-    addTaskBtn.addEventListener("click", taskControllerFunctions.openTaskModal);
+    submitTaskBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      taskControllerFunctions.addTask();
+    });
     closeTaskModalBtn.addEventListener(
       "click",
       taskControllerFunctions.closeTaskModal
     );
-    submitTaskBtn.addEventListener("click", taskControllerFunctions.addTask);
+  };
+  const taskListeners = function () {
+    const addTaskBtn = document.querySelector(".addTaskBtn");
+    const deleteTasksBtn = document.querySelectorAll(".taskDeleteBtn");
+    addTaskBtn.addEventListener("click", taskControllerFunctions.openTaskModal);
 
     deleteTasksBtn.forEach((btn) => {
       btn.addEventListener("click", (e) => {
@@ -36,7 +44,37 @@ const eventsListener = (() => {
       });
     });
   };
-  return { taskListeners, newTaskEventListener, deleteBtnListener };
+  return {
+    taskListeners,
+    newTaskEventListener,
+    deleteBtnListener,
+    taskModalListeners,
+  };
 })();
 
-export { eventsListener };
+const projectEventListeners = (() => {
+  const addProjectBtn = function () {
+    const btnAddProject = document.querySelector(".addProjectBtn");
+    btnAddProject.addEventListener(
+      "click",
+      projectControllerFunction.showProjectModal
+    );
+  };
+
+  const projectModalListeners = function () {
+    const submitProjectBtn = document.querySelector(".btnSubmitProject");
+    const closeProjectModalBtn = document.querySelector(".closeModal");
+    submitProjectBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      projectControllerFunction.addProject();
+    });
+    closeProjectModalBtn.addEventListener(
+      "click",
+      projectControllerFunction.closeProjectModal
+    );
+  };
+
+  return { addProjectBtn, projectModalListeners };
+})();
+
+export { taskEventsListener, projectEventListeners };

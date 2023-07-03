@@ -1,5 +1,5 @@
-const clearContainer = () => {
-  const divContainer = document.querySelector("#main-div-content");
+const clearContainer = (className) => {
+  const divContainer = document.querySelector(`.${className}`);
   while (divContainer.hasChildNodes()) {
     divContainer.removeChild(divContainer.lastChild);
   }
