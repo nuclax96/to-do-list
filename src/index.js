@@ -1,4 +1,4 @@
-import "../src/css/style.css";
+import "./css/style.css";
 import { createModal, initalHtmlLoad } from "./modules/initial-load";
 import fillHeader from "./modules/domHandler/header/populateHeader";
 import {
@@ -13,11 +13,11 @@ import {
   projectEventListeners,
   taskEventsListener,
 } from "./modules/eventListeners";
-import createProjectModal from "./modules/domHandler/nav/addProjectModal";
+// import createProjectModal from "./modules/domHandler/nav/addProjectModal";
 
 const projectsArr = [];
 const taskArr = [];
-const loadElements = function () {
+const loadElements = () => {
   initalHtmlLoad();
   fillHeader();
   fillNav();
@@ -27,13 +27,12 @@ const loadElements = function () {
   createModal();
   // Task Modal
   createTaskContainer();
-  //
 
   // show tasks on inital load
   taskDataHandler.displayTask();
 };
 
-const initializeListeners = function () {
+const initializeListeners = () => {
   // Task Listeners
   taskEventsListener.taskListeners();
   taskEventsListener.taskModalListeners();

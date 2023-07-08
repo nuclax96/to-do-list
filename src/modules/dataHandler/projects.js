@@ -1,5 +1,5 @@
 const projectDataHander = (() => {
-  const addProject = function () {
+  const addProject = () => {
     console.log("Hello");
   };
 
