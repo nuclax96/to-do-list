@@ -5,7 +5,7 @@ import {
 import taskDataHandler from "./dataHandler/task";
 
 const taskEventsListener = (() => {
-  const taskModalListeners = function () {
+  const taskModalListeners = () => {
     const submitTaskBtn = document.querySelector(".btnSubmitTask");
     const closeTaskModalBtn = document.querySelector(".closeModal");
     submitTaskBtn.addEventListener("click", (e) => {
@@ -17,7 +17,7 @@ const taskEventsListener = (() => {
       taskControllerFunctions.closeTaskModal
     );
   };
-  const taskListeners = function () {
+  const taskListeners = () => {
     const addTaskBtn = document.querySelector(".addTaskBtn");
     const deleteTasksBtn = document.querySelectorAll(".taskDeleteBtn");
     addTaskBtn.addEventListener("click", taskControllerFunctions.openTaskModal);
@@ -28,7 +28,7 @@ const taskEventsListener = (() => {
       });
     });
   };
-  const newTaskEventListener = function (id) {
+  const newTaskEventListener = (id) => {
     const newTaskDiv = document.querySelector(`[data-id=${id}]`);
     const imgDeleteBtn = newTaskDiv.querySelector(".taskDeleteBtn");
     imgDeleteBtn.addEventListener("click", (e) => {
@@ -53,7 +53,7 @@ const taskEventsListener = (() => {
 })();
 
 const projectEventListeners = (() => {
-  const addProjectBtn = function () {
+  const addProjectBtn = () => {
     const btnAddProject = document.querySelector(".addProjectBtn");
     btnAddProject.addEventListener(
       "click",
@@ -61,7 +61,7 @@ const projectEventListeners = (() => {
     );
   };
 
-  const projectModalListeners = function () {
+  const projectModalListeners = () => {
     const submitProjectBtn = document.querySelector(".btnSubmitProject");
     const closeProjectModalBtn = document.querySelector(".closeModal");
     submitProjectBtn.addEventListener("click", (e) => {

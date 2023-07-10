@@ -1,5 +1,6 @@
 import projectDataHander from "./dataHandler/projects";
 import taskDataHandler from "./dataHandler/task";
+import createTaskContainer from "./domHandler/main/addTaskModal";
 
 import { deleteTaskUsingId } from "./domHandler/main/populateMain";
 import taskModalFunctions from "./domHandler/main/taskModalFunctions";
@@ -8,36 +9,41 @@ import projectModalFunctions from "./domHandler/nav/projectModalFunctions";
 import { projectEventListeners, taskEventsListener } from "./eventListeners";
 import clearContainer from "./helperFunctions/clearContainer";
 import localStorageFunctions from "./helperFunctions/localStorage";
+
 const taskControllerFunctions = (() => {
   // const createModal = function () {
   //   taskModalFunctions.showModal();
   // };
 
-  const openTaskModal = function () {
+  const openTaskModal = () => {
+    clearContainer("modal");
+    createTaskContainer();
     taskModalFunctions.showModal();
+    taskEventsListener.taskModalListeners();
   };
-  const closeTaskModal = function () {
+  const closeTaskModal = () => {
+    console.log("Hello");
     taskModalFunctions.hideModal();
   };
-  const taskSubmitController = function () {};
+  const taskSubmitController = () => {};
 
-  const addTask = function () {
+  const addTask = () => {
     const userTask = taskDataHandler.addTask();
 
-    //Form Validation Here , TO-DO
+    // Form Validation Here , TO-DO
 
-    //local storage
+    // local storage
     localStorageFunctions.setLocalStorage("taskArr", userTask);
     localStorageFunctions.getAllItems("taskArr");
-    //Clear Input Fields
+    // Clear Input Fields
     taskModalFunctions.clearTaskModalValues();
-    //close the modal
+    // close the modal
     taskModalFunctions.hideModal();
     taskDataHandler.displayTask();
     taskEventsListener.deleteBtnListener();
   };
-  const deleteTask = function (e) {
-    const id = e.target.parentNode.dataset["id"];
+  const deleteTask = (e) => {
+    const { id } = e.target.parentNode.dataset;
     taskDataHandler.deleteTask("taskArr", id);
     deleteTaskUsingId(id);
   };
@@ -52,18 +58,18 @@ const taskControllerFunctions = (() => {
 })();
 
 const projectControllerFunction = (() => {
-  const showProjectModal = function () {
+  const showProjectModal = () => {
     clearContainer("modal");
     createProjectModal();
     projectModalFunctions.showModal();
     projectEventListeners.projectModalListeners();
   };
 
-  const addProject = function () {
+  const addProject = () => {
     projectDataHander.addProject();
   };
 
-  const closeProjectModal = function () {
+  const closeProjectModal = () => {
     projectModalFunctions.hideModal();
   };
   return { addProject, showProjectModal, closeProjectModal };

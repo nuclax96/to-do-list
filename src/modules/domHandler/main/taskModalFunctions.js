@@ -13,10 +13,10 @@ const taskModalFunctions = ((e) => {
     document.querySelector("#taskDueDate").value = "";
   };
 
-  const hideModal = function () {
+  const hideModal = () => {
     document.querySelector(".modal").classList.add("hidden");
   };
-  const showModal = function () {
+  const showModal = () => {
     document.querySelector(".modal").classList.remove("hidden");
   };
   return { getAddTaskValues, clearTaskModalValues, hideModal, showModal };
