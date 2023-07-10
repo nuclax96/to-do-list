@@ -1,13 +1,14 @@
 import { createDiv } from "./helperFunctions/createHtmlEl";
+
 const contentContainer = document.querySelector("#content");
 
 const initalHtmlLoad = function () {
   const header = document.createElement("header");
   const nav = document.createElement("nav");
   const main = document.createElement("main");
-  const footer = document.createElement("footer");
+  // const footer = document.createElement("footer");
 
-  contentContainer.append(header, nav, main, footer);
+  contentContainer.append(header, nav, main);
 };
 
 const createModal = function () {

@@ -1,5 +1,5 @@
-const taskModalFunctions = ((e) => {
-  const getAddTaskValues = function () {
+const taskModalFunctions = (() => {
+  const getAddTaskValues = () => {
     const taskName = document.querySelector("#taskName").value;
     const taskCreateDate = document.querySelector("#taskCreateDate").value;
     const taskDueDate = document.querySelector("#taskDueDate").value;
@@ -7,7 +7,7 @@ const taskModalFunctions = ((e) => {
     return { taskName, taskCreateDate, taskDueDate };
   };
 
-  const clearTaskModalValues = function () {
+  const clearTaskModalValues = () => {
     document.querySelector("#taskName").value = "";
     document.querySelector("#taskCreateDate").value = "";
     document.querySelector("#taskDueDate").value = "";

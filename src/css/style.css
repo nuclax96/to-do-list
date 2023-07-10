@@ -10,7 +10,7 @@
   display: grid;
   height: 100vh;
   grid-template-columns: minmax(225px, 25%) auto;
-  grid-template-rows: 50px 1fr 30px;
+  grid-template-rows: 50px 1fr;
 }
 
 header {
@@ -98,6 +98,9 @@ nav {
 .projectsContainer {
   width: 100%;
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 80px;
   justify-content: center;
 }
 

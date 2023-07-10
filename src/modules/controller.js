@@ -1,4 +1,4 @@
-import projectDataHander from "./dataHandler/projects";
+import projectDataHandler from "./dataHandler/projects";
 import taskDataHandler from "./dataHandler/task";
 import createTaskContainer from "./domHandler/main/addTaskModal";
 
@@ -11,10 +11,6 @@ import clearContainer from "./helperFunctions/clearContainer";
 import localStorageFunctions from "./helperFunctions/localStorage";
 
 const taskControllerFunctions = (() => {
-  // const createModal = function () {
-  //   taskModalFunctions.showModal();
-  // };
-
   const openTaskModal = () => {
     clearContainer("modal");
     createTaskContainer();
@@ -34,7 +30,7 @@ const taskControllerFunctions = (() => {
 
     // local storage
     localStorageFunctions.setLocalStorage("taskArr", userTask);
-    localStorageFunctions.getAllItems("taskArr");
+    // localStorageFunctions.getAllItems("taskArr");
     // Clear Input Fields
     taskModalFunctions.clearTaskModalValues();
     // close the modal
@@ -66,7 +62,16 @@ const projectControllerFunction = (() => {
   };
 
   const addProject = () => {
-    projectDataHander.addProject();
+    const projectData = projectDataHandler.addProject();
+
+    localStorageFunctions.setLocalStorage("projectArr", projectData);
+    // localStorageFunctions.getAllItems("projectArr");
+
+    projectModalFunctions.clearProjectModalValues();
+    // close the modal
+    projectModalFunctions.hideModal();
+    projectDataHandler.displayProject();
+    taskEventsListener.deleteBtnListener();
   };
 
   const closeProjectModal = () => {

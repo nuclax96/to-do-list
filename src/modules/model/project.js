@@ -1,4 +1,8 @@
-export class Project {
+function _getID() {
+  return `_${Math.random().toString(36).substring(2, 9)}`;
+}
+
+class Project {
   constructor(name) {
     this._id = _getID();
     this._name = name;
@@ -36,6 +40,4 @@ export class Project {
   }
 }
 
-function _getID() {
-  return "_" + Math.random().toString(36).substring(2, 9);
-}
+export default Project;

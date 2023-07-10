@@ -1,12 +1,11 @@
-import getAddTaskValues from "../domHandler/main/taskModalFunctions";
 import { fillTaskContainer } from "../domHandler/main/populateMain";
-import { Task } from "../model/task";
+import Task from "../model/task";
 import localStorageFunctions from "../helperFunctions/localStorage";
 import taskModalFunctions from "../domHandler/main/taskModalFunctions";
 
 const taskDataHandler = (() => {
-  const addTask = function () {
-    let priority = 5; //default priority set to 5 if not supplied
+  const addTask = () => {
+    let priority = 5; // default priority set to 5 if not supplied
     // Get task input fields'
     const inputValues = taskModalFunctions.getAddTaskValues();
     priority = inputValues.priority ? inputValues.priority : priority;
@@ -21,12 +20,12 @@ const taskDataHandler = (() => {
     return userTask;
   };
 
-  const displayTask = function () {
+  const displayTask = () => {
     const tasksArr = localStorageFunctions.getAllItems("taskArr");
     fillTaskContainer(tasksArr);
   };
 
-  const deleteTask = function (itemName, id) {
+  const deleteTask = (itemName, id) => {
     localStorageFunctions.deleteItemUsingId(itemName, id);
   };
 

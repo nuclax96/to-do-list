@@ -1,4 +1,8 @@
-export class Task {
+function _getID() {
+  return `_${Math.random().toString(36).substr(2, 9)}`;
+}
+
+class Task {
   constructor(title, dueDate, createDate, priority, completed) {
     this._id = _getID();
     this._title = title;
@@ -53,6 +57,4 @@ export class Task {
   }
 }
 
-function _getID() {
-  return "_" + Math.random().toString(36).substr(2, 9);
-}
+export default Task;

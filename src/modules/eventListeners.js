@@ -2,7 +2,6 @@ import {
   projectControllerFunction,
   taskControllerFunctions,
 } from "./controller";
-import taskDataHandler from "./dataHandler/task";
 
 const taskEventsListener = (() => {
   const taskModalListeners = () => {

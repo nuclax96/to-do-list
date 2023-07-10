@@ -1,9 +1,23 @@
-const projectDataHander = (() => {
+import { insertProjectLinks } from "../domHandler/nav/populateNav";
+import projectModalFunctions from "../domHandler/nav/projectModalFunctions";
+import localStorageFunctions from "../helperFunctions/localStorage";
+import Project from "../model/project";
+
+const projectDataHandler = (() => {
   const addProject = () => {
-    console.log("Hello");
+    const inputValue = projectModalFunctions.getAddProjectValues();
+    const projectObj = new Project(inputValue.projectName);
+    return projectObj;
   };
 
-  return { addProject };
+  const displayProject = () => {
+    const projectArr = localStorageFunctions.getAllItems("projectArr");
+    insertProjectLinks(projectArr);
+  };
+
+  const deleteProject = () => {};
+
+  return { addProject, displayProject, deleteProject };
 })();
 
-export default projectDataHander;
+export default projectDataHandler;

@@ -2,13 +2,12 @@ import {
   createButton,
   createDiv,
   createForm,
-  createHeading,
   createInput,
   createLabel,
   createParagraph,
 } from "../../helperFunctions/createHtmlEl";
 
-const createProjectModal = function () {
+const createProjectModal = () => {
   const modal = document.querySelector(".modal");
   const modalContainer = createDiv("modalContainer");
   const projectContainer = createForm("projectModalContainer");

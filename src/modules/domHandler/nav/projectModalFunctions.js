@@ -1,23 +1,17 @@
-const projectModalFunctions = ((e) => {
-  const getAddProjectValues = function () {
+const projectModalFunctions = (() => {
+  const getAddProjectValues = () => {
     const projectName = document.querySelector("#projectName").value;
-    const projectCreateDate =
-      document.querySelector("#projectCreateDate").value;
-    const projectDueDate = document.querySelector("#projectDueDate").value;
-
-    return { projectName, projectCreateDate, projectDueDate };
+    return { projectName };
   };
 
-  const clearProjectModalValues = function () {
+  const clearProjectModalValues = () => {
     document.querySelector("#projectName").value = "";
-    document.querySelector("#projectCreateDate").value = "";
-    document.querySelector("#projectDueDate").value = "";
   };
 
-  const hideModal = function () {
+  const hideModal = () => {
     document.querySelector(".modal").classList.add("hidden");
   };
-  const showModal = function () {
+  const showModal = () => {
     document.querySelector(".modal").classList.remove("hidden");
   };
   return { getAddProjectValues, clearProjectModalValues, hideModal, showModal };

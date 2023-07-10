@@ -1,22 +1,22 @@
 const localStorageFunctions = (() => {
-  const getItemUsingId = function (itemName, itemId) {};
+  const getItemUsingId = () => {};
 
-  const getAllItems = function (itemName) {
-    const taskArrLocalStorage = localStorage.getItem("taskArr");
+  const getAllItems = (itemName = "taskArr") => {
+    const taskArrLocalStorage = localStorage.getItem(itemName);
     return JSON.parse(taskArrLocalStorage);
   };
 
-  const setLocalStorage = function (itemName, obj) {
+  const setLocalStorage = (itemName, obj) => {
     let currentItem = getAllItems(itemName);
     if (!currentItem) {
       currentItem = [];
     }
     currentItem.push(obj);
 
-    localStorage.setItem("taskArr", JSON.stringify(currentItem));
+    localStorage.setItem(itemName, JSON.stringify(currentItem));
   };
 
-  const deleteItemUsingId = function (itemName, id) {
+  const deleteItemUsingId = (itemName, id) => {
     const currentItem = getAllItems(itemName);
     const updatedArr = currentItem.filter((item) => {
       if (item._id !== id) return item;
@@ -24,7 +24,7 @@ const localStorageFunctions = (() => {
     localStorage.removeItem("taskArr");
     localStorage.setItem("taskArr", JSON.stringify(updatedArr));
   };
-  const clearLocalStorage = function () {};
+  const clearLocalStorage = () => {};
 
   return {
     setLocalStorage,

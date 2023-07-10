@@ -2,19 +2,18 @@ import iconEdit from "../../../assets/edit.svg";
 import iconDelete from "../../../assets/delete.svg";
 import {
   createDiv,
-  createLink,
   createHeading,
   createParagraph,
   createImage,
   createButton,
 } from "../../helperFunctions/createHtmlEl";
 
-const createTaskDiv = function (
+const createTaskDiv = (
   taskName,
   taskCreatedDate,
   taskDueDate,
   taskCompleted
-) {
+) => {
   const taskContainer = createDiv("taskContainer");
   const name = createParagraph(taskName, "taskName");
   const dueDate = createParagraph(taskDueDate, "taskDueDate");
@@ -35,7 +34,7 @@ const createTaskDiv = function (
   return taskContainer;
 };
 
-const fillTaskContainer = function (taskArr) {
+const fillTaskContainer = (taskArr) => {
   const tasksContatiner = document.querySelector(".tasksContainer");
   tasksContatiner.textContent = "";
   if (!taskArr) return;
@@ -47,7 +46,7 @@ const fillTaskContainer = function (taskArr) {
       item._dueDate,
       item._completed
     );
-    taskDiv.dataset["id"] = item._id;
+    taskDiv.dataset.id = item._id;
     tasksContatiner.append(taskDiv);
   });
 };
