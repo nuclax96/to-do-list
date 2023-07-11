@@ -3,13 +3,14 @@ function _getID() {
 }
 
 class Task {
-  constructor(title, dueDate, createDate, priority, completed) {
+  constructor(title, dueDate, createDate, priority, completed, projectId) {
     this._id = _getID();
     this._title = title;
     this._dueDate = dueDate;
     this._createDate = createDate;
     this._priority = priority;
     this._completed = completed;
+    this._projectId = projectId;
   }
 
   get id() {
@@ -33,6 +34,16 @@ class Task {
   set description(value) {
     if (value) {
       this._description = value;
+    }
+  }
+
+  get createDate() {
+    return this._createDate;
+  }
+
+  set createDate(value) {
+    if (value) {
+      this._createDate = value;
     }
   }
 

@@ -34,7 +34,7 @@ const taskEventsListener = (() => {
       taskControllerFunctions.deleteTask(e);
     });
   };
-  const deleteBtnListener = function () {
+  const deleteBtnListener = () => {
     const deleteTasksBtn = document.querySelectorAll(".taskDeleteBtn");
 
     deleteTasksBtn.forEach((btn) => {
@@ -73,7 +73,16 @@ const projectEventListeners = (() => {
     );
   };
 
-  return { addProjectBtn, projectModalListeners };
+  const projectNavListeners = () => {
+    const navProjectLinks = document.querySelectorAll(".linkNav");
+    navProjectLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        projectControllerFunction.showProjectTasks(e);
+      });
+    });
+  };
+
+  return { addProjectBtn, projectModalListeners, projectNavListeners };
 })();
 
 export { taskEventsListener, projectEventListeners };

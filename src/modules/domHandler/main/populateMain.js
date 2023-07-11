@@ -38,7 +38,6 @@ const fillTaskContainer = (taskArr) => {
   const tasksContatiner = document.querySelector(".tasksContainer");
   tasksContatiner.textContent = "";
   if (!taskArr) return;
-  console.log(taskArr);
   taskArr.forEach((item) => {
     const taskDiv = createTaskDiv(
       item._title,
@@ -51,13 +50,13 @@ const fillTaskContainer = (taskArr) => {
   });
 };
 
-const deleteTaskUsingId = function (id) {
+const deleteTaskUsingId = (id) => {
   const taskDiv = document.querySelector(`[data-id=${id}]`);
   const taskContainer = document.querySelector(".tasksContainer");
   taskContainer.removeChild(taskDiv);
 };
 
-const fillMainContainer = function () {
+const fillMainContainer = () => {
   const mainContainer = document.querySelector("main");
   const headingContainer = createDiv("mainHeadingContainer");
   const taskHeadingContainer = createDiv("taskHeadingContainer");

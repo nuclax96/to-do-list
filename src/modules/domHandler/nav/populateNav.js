@@ -12,6 +12,7 @@ const insertProjectLinks = (projectsArr) => {
 
   projectsArr.forEach((item) => {
     const projectLink = createLink(item._name, "linkNav");
+    projectLink.dataset.id = item._id;
     projectContatiner.append(projectLink);
   });
 };

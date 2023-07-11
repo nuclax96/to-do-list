@@ -15,7 +15,8 @@ const taskDataHandler = (() => {
       inputValues.taskDueDate,
       inputValues.taskCreateDate,
       priority,
-      false
+      false,
+      inputValues.taskProjectId
     );
     return userTask;
   };
@@ -29,7 +30,11 @@ const taskDataHandler = (() => {
     localStorageFunctions.deleteItemUsingId(itemName, id);
   };
 
-  return { displayTask, deleteTask, addTask };
+  const getTasksUsingProjectId = (projectId) => {
+    const taskArr = localStorageFunctions.getAllItems("taskArr");
+    return taskArr.filter((item) => item._projectId === projectId);
+  };
+  return { displayTask, deleteTask, addTask, getTasksUsingProjectId };
 })();
 
 export default taskDataHandler;

@@ -1,14 +1,15 @@
+import localStorageFunctions from "../../helperFunctions/localStorage";
 import {
   createButton,
   createDiv,
   createForm,
-  createHeading,
+  createSelectUsingArray,
   createInput,
   createLabel,
   createParagraph,
 } from "../../helperFunctions/createHtmlEl";
 
-const createTaskContainer = function () {
+const createTaskContainer = () => {
   const modal = document.querySelector(".modal");
   const taskContainer = createForm("taskModalContainer");
   taskContainer.method = "GET";
@@ -29,6 +30,13 @@ const createTaskContainer = function () {
   const taskDueDateLabel = createLabel("Due Date", "taskDueDate");
   // const submitBtn = createButton("Submit", "btnSubmitTask");
   const submitBtn = createInput("Submit", "btnSubmitTask", "submit");
+
+  const projectsArr = localStorageFunctions.getAllItems("projectArr");
+  const projectsDropdownEl = createSelectUsingArray(
+    "projectOptionList",
+    "selectProject",
+    projectsArr
+  );
   submitBtn.classList.add("btnSubmitTask");
   submitBtn.value = "Submit";
   modalContainer.append(taskHeadingContainer, taskContainer);
@@ -42,6 +50,7 @@ const createTaskContainer = function () {
     taskCreateDateInput,
     taskDueDateLabel,
     taskDueDateInput,
+    projectsDropdownEl,
     submitBtn
   );
   modal.append(modalContainer);

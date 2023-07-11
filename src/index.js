@@ -41,6 +41,7 @@ const initializeListeners = () => {
 
   // Project Listeners
   projectEventListeners.addProjectBtn();
+  projectEventListeners.projectNavListeners();
 
   //
 };

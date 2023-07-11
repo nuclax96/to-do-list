@@ -2,7 +2,11 @@ import projectDataHandler from "./dataHandler/projects";
 import taskDataHandler from "./dataHandler/task";
 import createTaskContainer from "./domHandler/main/addTaskModal";
 
-import { deleteTaskUsingId } from "./domHandler/main/populateMain";
+import {
+  deleteTaskUsingId,
+  fillMainContainer,
+  fillTaskContainer,
+} from "./domHandler/main/populateMain";
 import taskModalFunctions from "./domHandler/main/taskModalFunctions";
 import createProjectModal from "./domHandler/nav/addProjectModal";
 import projectModalFunctions from "./domHandler/nav/projectModalFunctions";
@@ -77,6 +81,13 @@ const projectControllerFunction = (() => {
   const closeProjectModal = () => {
     projectModalFunctions.hideModal();
   };
-  return { addProject, showProjectModal, closeProjectModal };
+
+  const showProjectTasks = (e) => {
+    clearContainer("tasksContainer");
+    const taskArr = taskDataHandler.getTasksUsingProjectId(e.target.dataset.id);
+    fillTaskContainer(taskArr);
+  };
+
+  return { addProject, showProjectModal, closeProjectModal, showProjectTasks };
 })();
 export { taskControllerFunctions, projectControllerFunction };

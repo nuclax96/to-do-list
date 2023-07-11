@@ -28,7 +28,7 @@ const createParagraph = (txt, paraClass) => {
   //   createdEl.classList.add(imgClass);
   return createdEl;
 };
-const createLink = function (txt, linkClass) {
+const createLink = (txt, linkClass) => {
   const createdEl = document.createElement("a");
   createdEl.textContent = txt;
   createdEl.setAttribute("href", "#");
@@ -37,7 +37,7 @@ const createLink = function (txt, linkClass) {
   return createdEl;
 };
 
-const createButton = function (txt, btnClass) {
+const createButton = (txt, btnClass) => {
   const createdEl = document.createElement("button");
   createdEl.textContent = txt;
   // createdEl.setAttribute("href", "#");
@@ -46,7 +46,7 @@ const createButton = function (txt, btnClass) {
   return createdEl;
 };
 
-const createInput = function (inputId, nameAttr, type) {
+const createInput = (inputId, nameAttr, type) => {
   const createdEl = document.createElement("input");
   // createdEl.textContent = txt;
   createdEl.setAttribute("type", type);
@@ -57,18 +57,32 @@ const createInput = function (inputId, nameAttr, type) {
   return createdEl;
 };
 
-const createLabel = function (txt, forAttr) {
+const createLabel = (txt, forAttr) => {
   const createdEl = document.createElement("label");
   createdEl.textContent = txt;
   createdEl.setAttribute("for", forAttr);
   return createdEl;
 };
 
-const createForm = function (formClassName) {
+const createForm = (formClassName) => {
   const createdEl = document.createElement("form");
   createdEl.setAttribute("action", "#");
   createdEl.classList.add(formClassName);
   return createdEl;
+};
+
+const createSelectUsingArray = (name, id, arr = []) => {
+  // const selectLabel = createLabel("Project", "projectList");
+  const selectEL = document.createElement("select");
+  selectEL.name = name;
+  selectEL.id = id;
+  arr.forEach((item) => {
+    const optionEl = document.createElement("option");
+    optionEl.value = item._id;
+    optionEl.textContent = item._name;
+    selectEL.append(optionEl);
+  });
+  return selectEL;
 };
 
 export {
@@ -82,4 +96,5 @@ export {
   createInput,
   createLabel,
   createForm,
+  createSelectUsingArray,
 };
