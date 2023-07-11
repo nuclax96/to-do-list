@@ -40,12 +40,24 @@ const taskControllerFunctions = (() => {
     // close the modal
     taskModalFunctions.hideModal();
     taskDataHandler.displayTask();
-    taskEventsListener.deleteBtnListener();
+    taskEventsListener.newTaskEventListener();
   };
   const deleteTask = (e) => {
     const { id } = e.target.parentNode.dataset;
     taskDataHandler.deleteTask("taskArr", id);
     deleteTaskUsingId(id);
+  };
+
+  const taskStatus = (e) => {
+    console.log(e.target.parentNode);
+    e.target.parentNode.classList.toggle("taskCompleted");
+  };
+
+  const showTaskNavLink = (e) => {
+    clearContainer("tasksContainer");
+    const taskArr = taskDataHandler.getTask(e.target.textContent);
+    fillTaskContainer(taskArr);
+    taskEventsListener.taskListeners();
   };
 
   return {
@@ -54,6 +66,8 @@ const taskControllerFunctions = (() => {
     closeTaskModal,
     addTask,
     deleteTask,
+    showTaskNavLink,
+    taskStatus,
   };
 })();
 
@@ -67,15 +81,13 @@ const projectControllerFunction = (() => {
 
   const addProject = () => {
     const projectData = projectDataHandler.addProject();
-
     localStorageFunctions.setLocalStorage("projectArr", projectData);
     // localStorageFunctions.getAllItems("projectArr");
-
     projectModalFunctions.clearProjectModalValues();
     // close the modal
     projectModalFunctions.hideModal();
     projectDataHandler.displayProject();
-    taskEventsListener.deleteBtnListener();
+    taskEventsListener.newTaskEventListener();
   };
 
   const closeProjectModal = () => {

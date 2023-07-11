@@ -6,6 +6,7 @@ import {
   createParagraph,
   createImage,
   createButton,
+  createInput,
 } from "../../helperFunctions/createHtmlEl";
 
 const createTaskDiv = (
@@ -21,9 +22,13 @@ const createTaskDiv = (
   const completed = createParagraph(taskCompleted, "taskCompletedInd");
   const editIcon = createImage(iconEdit, "addIcon");
   const deleteIcon = createImage(iconDelete, "addIcon");
+  const markStatus = document.createElement("input");
+  markStatus.type = "checkbox";
+  markStatus.classList.add("taskStatusBtn");
   deleteIcon.classList.add("taskDeleteBtn");
 
   taskContainer.append(
+    markStatus,
     name,
     createDate,
     dueDate,
@@ -60,6 +65,7 @@ const fillMainContainer = () => {
   const mainContainer = document.querySelector("main");
   const headingContainer = createDiv("mainHeadingContainer");
   const taskHeadingContainer = createDiv("taskHeadingContainer");
+  const taskStatus = createParagraph("Status", "taskStatusHeading");
   const taskNameHeading = createParagraph("Name", "taskNameHeading");
   const taskDueDateHeading = createParagraph("Due Date", "taskNameHeading");
   const taskEditHeading = createParagraph("Edit", "editHeading");
@@ -70,6 +76,7 @@ const fillMainContainer = () => {
   );
   const taskCompletedHeading = createParagraph("Completed", "taskNameHeading");
   taskHeadingContainer.append(
+    taskStatus,
     taskNameHeading,
     taskCreateDateHeading,
     taskDueDateHeading,

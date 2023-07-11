@@ -1,3 +1,6 @@
 1. Form Validation . Add Task 
 2. Visual fixes. 
 3. Database integration
+
+
+Newly created projects wont have listeners to be clicked on 

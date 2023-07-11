@@ -220,20 +220,18 @@ main {
 
 .taskHeadingContainer {
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 1fr;
   font-weight: bold;
   font-size: 18px;
   margin-left: 10px;
 }
 
-.tasksContainer {
-  display: grid;
-  grid-template-rows: repeat(auto-fit, minmax(50px, 70px));
-}
 .taskContainer {
   color: #3d3939;
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(auto-fit, minmax(50px, 70px));
+
+  grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 1fr;
   align-items: center;
   border-bottom: 1px solid gray;
   transition: all 400ms ease-out;
@@ -241,9 +239,10 @@ main {
   justify-content: center;
 }
 
-.taskContainer:hover {
-  background-color: #ced8fa;
+.taskCompleted {
+  text-decoration: line-through;
 }
+
 .addIcon,
 .addTaskIcon {
   width: 20%;
@@ -251,10 +250,12 @@ main {
   height: auto;
   transition: all 100ms ease-in;
 }
+
 .addIcon:hover {
   transform: scale(1.25);
   height: auto;
 }
+
 footer {
   grid-area: "footer";
   background-color: #eeeeee;

@@ -19,35 +19,61 @@ const taskEventsListener = (() => {
   const taskListeners = () => {
     const addTaskBtn = document.querySelector(".addTaskBtn");
     const deleteTasksBtn = document.querySelectorAll(".taskDeleteBtn");
+    const taskStatusBtn = document.querySelectorAll(".taskStatusBtn");
     addTaskBtn.addEventListener("click", taskControllerFunctions.openTaskModal);
-
+    taskStatusBtn.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        taskControllerFunctions.taskStatus(e);
+      });
+    });
     deleteTasksBtn.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         taskControllerFunctions.deleteTask(e);
       });
     });
   };
-  const newTaskEventListener = (id) => {
-    const newTaskDiv = document.querySelector(`[data-id=${id}]`);
-    const imgDeleteBtn = newTaskDiv.querySelector(".taskDeleteBtn");
-    imgDeleteBtn.addEventListener("click", (e) => {
-      taskControllerFunctions.deleteTask(e);
-    });
-  };
-  const deleteBtnListener = () => {
+  // const newTaskEventListener = (id) => {
+  //   const newTaskDiv = document.querySelector(`[data-id=${id}]`);
+  //   const imgDeleteBtn = newTaskDiv.querySelector(".taskDeleteBtn");
+  //   const taskStatusBtn = document.querySelectorAll(".taskStatusBtn");
+  //   taskStatusBtn.forEach((btn) => {
+  //     btn.addEventListener("click", (e) => {
+  //       taskControllerFunctions.taskStatus(e);
+  //     });
+  //   });
+  //   imgDeleteBtn.addEventListener("click", (e) => {
+  //     taskControllerFunctions.deleteTask(e);
+  //   });
+  // };
+  const newTaskEventListener = () => {
     const deleteTasksBtn = document.querySelectorAll(".taskDeleteBtn");
-
+    const taskStatusBtn = document.querySelectorAll(".taskStatusBtn");
+    taskStatusBtn.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        taskControllerFunctions.taskStatus(e);
+      });
+    });
     deleteTasksBtn.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         taskControllerFunctions.deleteTask(e);
+      });
+    });
+  };
+
+  const navTaskListener = () => {
+    const taskNavElList = document.querySelectorAll(".taskNavLink");
+    taskNavElList.forEach((item) => {
+      item.addEventListener("click", (e) => {
+        taskControllerFunctions.showTaskNavLink(e);
       });
     });
   };
   return {
     taskListeners,
     newTaskEventListener,
-    deleteBtnListener,
+
     taskModalListeners,
+    navTaskListener,
   };
 })();
 
@@ -74,7 +100,7 @@ const projectEventListeners = (() => {
   };
 
   const projectNavListeners = () => {
-    const navProjectLinks = document.querySelectorAll(".linkNav");
+    const navProjectLinks = document.querySelectorAll(".projectLink");
     navProjectLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
         projectControllerFunction.showProjectTasks(e);

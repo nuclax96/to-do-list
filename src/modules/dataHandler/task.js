@@ -1,3 +1,4 @@
+import { isToday, parseISO, isThisWeek } from "date-fns";
 import { fillTaskContainer } from "../domHandler/main/populateMain";
 import Task from "../model/task";
 import localStorageFunctions from "../helperFunctions/localStorage";
@@ -34,7 +35,32 @@ const taskDataHandler = (() => {
     const taskArr = localStorageFunctions.getAllItems("taskArr");
     return taskArr.filter((item) => item._projectId === projectId);
   };
-  return { displayTask, deleteTask, addTask, getTasksUsingProjectId };
+
+  const getTask = (choice) => {
+    const taskArr = localStorageFunctions.getAllItems("taskArr");
+
+    switch (choice) {
+      case "All":
+        return localStorageFunctions.getAllItems("taskArr");
+
+      case "Today":
+        return taskArr.filter((item) => isToday(parseISO(item._dueDate)));
+      case "Week":
+        return taskArr.filter((item) => isThisWeek(parseISO(item._dueDate)));
+
+        break;
+      case "Important":
+        console.log("Show Important Task");
+
+        break;
+      case "Completed":
+        console.log("Show Completed Task");
+
+        break;
+      default:
+    }
+  };
+  return { displayTask, deleteTask, addTask, getTasksUsingProjectId, getTask };
 })();
 
 export default taskDataHandler;

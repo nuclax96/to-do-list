@@ -37,6 +37,7 @@ const initializeListeners = () => {
   // Task Listeners
   taskEventsListener.taskListeners();
   taskEventsListener.taskModalListeners();
+  taskEventsListener.navTaskListener();
   //
 
   // Project Listeners

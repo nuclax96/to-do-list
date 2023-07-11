@@ -12,6 +12,7 @@ const insertProjectLinks = (projectsArr) => {
 
   projectsArr.forEach((item) => {
     const projectLink = createLink(item._name, "linkNav");
+    projectLink.classList.add("projectLink");
     projectLink.dataset.id = item._id;
     projectContatiner.append(projectLink);
   });
@@ -40,6 +41,12 @@ const fillNav = () => {
   const linkWeek = createLink("Week", "linkNav");
   const linkImportant = createLink("Important", "linkNav");
   const linkCompleted = createLink("Completed", "linkNav");
+
+  linkAll.classList.add("taskNavLink");
+  linkToday.classList.add("taskNavLink");
+  linkWeek.classList.add("taskNavLink");
+  linkImportant.classList.add("taskNavLink");
+  linkCompleted.classList.add("taskNavLink");
   navContainer.append(navTaskContainer);
   navTaskContainer.append(
     linkAll,
