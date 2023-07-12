@@ -100,6 +100,13 @@ const projectEventListeners = (() => {
 
   const projectNavListeners = () => {
     const navProjectLinks = document.querySelectorAll(".projectLink");
+    const taskStatusBtn = document.querySelectorAll(".taskStatusBtn");
+
+    taskStatusBtn.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        taskControllerFunctions.taskStatus(e);
+      });
+    });
     navProjectLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
         projectControllerFunction.showProjectTasks(e);

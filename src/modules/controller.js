@@ -1,4 +1,9 @@
-import { getCurrentTabVar } from "../index.js";
+import {
+  changeCurrentProjectIdVar,
+  changeCurrentTabVar,
+  getCurrentProjectIdVar,
+  getCurrentTabVar,
+} from "../index.js";
 import projectDataHandler from "./dataHandler/projects";
 import taskDataHandler from "./dataHandler/task";
 import createTaskContainer from "./domHandler/main/addTaskModal";
@@ -62,12 +67,13 @@ const taskControllerFunctions = (() => {
     e.target.parentNode.classList.toggle("taskCompleted");
     clearContainer("tasksContainer");
 
-    if (getCurrentTabVar()) {
+    if (getCurrentTabVar() != null) {
       const taskArr = taskDataHandler.getTask(getCurrentTabVar());
       fillTaskContainer(taskArr);
     } else {
+      console.log(getCurrentProjectIdVar());
       const taskArr = taskDataHandler.getTasksUsingProjectId(
-        e.target.dataset.id
+        getCurrentProjectIdVar()
       );
       fillTaskContainer(taskArr);
     }
@@ -119,8 +125,11 @@ const projectControllerFunction = (() => {
 
   const showProjectTasks = (e) => {
     clearContainer("tasksContainer");
+    changeCurrentProjectIdVar(e.target.dataset.id);
+    changeCurrentTabVar(null);
     const taskArr = taskDataHandler.getTasksUsingProjectId(e.target.dataset.id);
     fillTaskContainer(taskArr);
+    projectEventListeners.projectNavListeners();
   };
 
   return { addProject, showProjectModal, closeProjectModal, showProjectTasks };
