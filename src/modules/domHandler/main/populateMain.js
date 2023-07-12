@@ -23,6 +23,15 @@ const createTaskDiv = (
   const editIcon = createImage(iconEdit, "addIcon");
   const deleteIcon = createImage(iconDelete, "addIcon");
   const markStatus = document.createElement("input");
+
+  if (taskCompleted) {
+    taskContainer.classList.add("taskCompleted");
+    markStatus.checked = true;
+  } else {
+    taskContainer.classList.remove("taskCompleted");
+    markStatus.checked = false;
+  }
+
   markStatus.type = "checkbox";
   markStatus.classList.add("taskStatusBtn");
   deleteIcon.classList.add("taskDeleteBtn");

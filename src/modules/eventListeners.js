@@ -71,7 +71,6 @@ const taskEventsListener = (() => {
   return {
     taskListeners,
     newTaskEventListener,
-
     taskModalListeners,
     navTaskListener,
   };

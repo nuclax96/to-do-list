@@ -3,6 +3,11 @@ import { fillTaskContainer } from "../domHandler/main/populateMain";
 import Task from "../model/task";
 import localStorageFunctions from "../helperFunctions/localStorage";
 import taskModalFunctions from "../domHandler/main/taskModalFunctions";
+import {
+  changeCurrentTabVar,
+  changeCurrentProjectIdVar,
+  getCurrentTabVar,
+} from "../../index.js";
 
 const taskDataHandler = (() => {
   const addTask = () => {
@@ -33,34 +38,44 @@ const taskDataHandler = (() => {
 
   const getTasksUsingProjectId = (projectId) => {
     const taskArr = localStorageFunctions.getAllItems("taskArr");
+
+    changeCurrentProjectIdVar(projectId);
+    changeCurrentTabVar(null);
     return taskArr.filter((item) => item._projectId === projectId);
   };
 
   const getTask = (choice) => {
     const taskArr = localStorageFunctions.getAllItems("taskArr");
-
+    changeCurrentTabVar(choice);
+    changeCurrentProjectIdVar(null);
     switch (choice) {
       case "All":
         return localStorageFunctions.getAllItems("taskArr");
-
       case "Today":
         return taskArr.filter((item) => isToday(parseISO(item._dueDate)));
       case "Week":
         return taskArr.filter((item) => isThisWeek(parseISO(item._dueDate)));
-
-        break;
       case "Important":
         console.log("Show Important Task");
-
         break;
       case "Completed":
         console.log("Show Completed Task");
-
         break;
       default:
     }
   };
-  return { displayTask, deleteTask, addTask, getTasksUsingProjectId, getTask };
+
+  const editTask = (property, taskId, flag = false) => {
+    localStorageFunctions.editLocalStorage("taskArr", property, flag, taskId);
+  };
+  return {
+    displayTask,
+    deleteTask,
+    addTask,
+    getTasksUsingProjectId,
+    getTask,
+    editTask,
+  };
 })();
 
 export default taskDataHandler;

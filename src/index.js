@@ -17,6 +17,21 @@ import {
 
 const projectsArr = [];
 const taskArr = [];
+let currentTab = "All";
+let currentProjectId = null;
+
+const changeCurrentTabVar = (val) => {
+  currentTab = val;
+};
+const getCurrentTabVar = () => {
+  return currentTab;
+};
+
+const changeCurrentProjectIdVar = (val) => {
+  currentProjectId = val;
+};
+const getCurrentProjectIdVar = () => currentProjectId;
+
 const loadElements = () => {
   initalHtmlLoad();
   fillHeader();
@@ -50,4 +65,15 @@ const initializeListeners = () => {
 loadElements();
 initializeListeners();
 
-export { projectsArr, taskArr };
+// setInterval(() => {
+//   console.log(currentTab, currentProjectId);
+// }, 2000);
+
+export {
+  projectsArr,
+  taskArr,
+  changeCurrentTabVar,
+  getCurrentTabVar,
+  changeCurrentProjectIdVar,
+  getCurrentProjectIdVar,
+};

@@ -1,3 +1,4 @@
+import { getCurrentTabVar } from "../index.js";
 import projectDataHandler from "./dataHandler/projects";
 import taskDataHandler from "./dataHandler/task";
 import createTaskContainer from "./domHandler/main/addTaskModal";
@@ -49,8 +50,30 @@ const taskControllerFunctions = (() => {
   };
 
   const taskStatus = (e) => {
-    console.log(e.target.parentNode);
+    const parentDivId = e.target.parentNode.dataset.id;
+    let taskStatusFlag;
+    const item = localStorageFunctions.getItemUsingId("taskArr", parentDivId);
+    if (!item[0]._completed) {
+      taskStatusFlag = true;
+    } else {
+      taskStatusFlag = false;
+    }
+    taskDataHandler.editTask("_completed", parentDivId, taskStatusFlag);
     e.target.parentNode.classList.toggle("taskCompleted");
+    clearContainer("tasksContainer");
+
+    if (getCurrentTabVar()) {
+      const taskArr = taskDataHandler.getTask(getCurrentTabVar());
+      fillTaskContainer(taskArr);
+    } else {
+      const taskArr = taskDataHandler.getTasksUsingProjectId(
+        e.target.dataset.id
+      );
+      fillTaskContainer(taskArr);
+    }
+
+    // taskDataHandler.displayTask();
+    taskEventsListener.taskListeners();
   };
 
   const showTaskNavLink = (e) => {
