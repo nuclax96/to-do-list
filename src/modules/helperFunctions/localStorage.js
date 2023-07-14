@@ -6,8 +6,6 @@ const localStorageFunctions = (() => {
   const getItemUsingId = (itemName, id) => {
     const items = getAllItems(itemName);
     const itemArr = items.filter((item) => item._id === id);
-
-    console.log(itemArr);
     return itemArr;
   };
 
@@ -17,7 +15,7 @@ const localStorageFunctions = (() => {
       currentItem = [];
     }
     currentItem.push(obj);
-
+    console.log("Hello", currentItem);
     localStorage.setItem(itemName, JSON.stringify(currentItem));
   };
 
@@ -50,6 +48,7 @@ const localStorageFunctions = (() => {
 
   return {
     setLocalStorage,
+    setLocalStorageItem,
     clearLocalStorage,
     getAllItems,
     getItemUsingId,

@@ -3,17 +3,19 @@ import {
   createLink,
   createHeading,
   createButton,
+  createImage,
 } from "../../helperFunctions/createHtmlEl";
-
+// import deleteProjectImgSrc from "../../../assets/delete_project.png";
 const insertProjectLinks = (projectsArr) => {
   const projectContatiner = document.querySelector(".projectsContainer");
-  console.log(projectsArr);
   if (!projectsArr) return;
 
   projectsArr.forEach((item) => {
     const projectLink = createLink(item._name, "linkNav");
     projectLink.classList.add("projectLink");
     projectLink.dataset.id = item._id;
+
+    // const deleteProjectImg = createImage(deleteProjectImgSrc, "deleteProject");
     projectContatiner.append(projectLink);
   });
 };

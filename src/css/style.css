@@ -50,7 +50,6 @@ nav {
   gap: 15px;
   margin-top: 10px;
   width: 90%;
-  /* background-color: #ec52e5; */
 }
 
 .projectNavContainer {
@@ -125,6 +124,7 @@ nav {
 }
 
 .linkNav.selected {
+  color: white;
   background-color: rgb(56, 113, 235);
 }
 

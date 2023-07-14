@@ -15,6 +15,10 @@ import {
 } from "./domHandler/main/populateMain";
 import taskModalFunctions from "./domHandler/main/taskModalFunctions";
 import createProjectModal from "./domHandler/nav/addProjectModal";
+import {
+  addClassToNavLink,
+  clearClassNavLink,
+} from "./domHandler/nav/navLinksSelected.js";
 import projectModalFunctions from "./domHandler/nav/projectModalFunctions";
 import { projectEventListeners, taskEventsListener } from "./eventListeners";
 import clearContainer from "./helperFunctions/clearContainer";
@@ -83,9 +87,14 @@ const taskControllerFunctions = (() => {
   };
 
   const showTaskNavLink = (e) => {
+    const navLinkList = document.querySelectorAll(".linkNav");
+
     clearContainer("tasksContainer");
     const taskArr = taskDataHandler.getTask(e.target.textContent);
     fillTaskContainer(taskArr);
+
+    clearClassNavLink(navLinkList, "selected");
+    addClassToNavLink(e.target, "selected");
     taskEventsListener.taskListeners();
   };
 
@@ -110,6 +119,8 @@ const projectControllerFunction = (() => {
 
   const addProject = () => {
     const projectData = projectDataHandler.addProject();
+    console.log(projectData);
+    // localStorageFunctions.clearLocalStorage("projectArr");
     localStorageFunctions.setLocalStorage("projectArr", projectData);
     // localStorageFunctions.getAllItems("projectArr");
     projectModalFunctions.clearProjectModalValues();
@@ -129,6 +140,10 @@ const projectControllerFunction = (() => {
     changeCurrentTabVar(null);
     const taskArr = taskDataHandler.getTasksUsingProjectId(e.target.dataset.id);
     fillTaskContainer(taskArr);
+
+    const navLinkList = document.querySelectorAll(".linkNav");
+    clearClassNavLink(navLinkList, "selected");
+    addClassToNavLink(e.target, "selected");
     projectEventListeners.projectNavListeners();
   };
 

@@ -72,6 +72,8 @@ const createForm = (formClassName) => {
 };
 
 const createSelectUsingArray = (name, id, arr = []) => {
+  if (!arr) return;
+  console.log(arr);
   // const selectLabel = createLabel("Project", "projectList");
   const selectEL = document.createElement("select");
   selectEL.name = name;
