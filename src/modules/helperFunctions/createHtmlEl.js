@@ -5,7 +5,6 @@ const createDiv = (divClass) => {
 };
 
 const insertIntoContainer = (container, child) => {
-  console.log(child);
   container.appendChild(child);
 };
 
@@ -73,8 +72,6 @@ const createForm = (formClassName) => {
 
 const createSelectUsingArray = (name, id, arr = []) => {
   if (!arr) return;
-  console.log(arr);
-  // const selectLabel = createLabel("Project", "projectList");
   const selectEL = document.createElement("select");
   selectEL.name = name;
   selectEL.id = id;

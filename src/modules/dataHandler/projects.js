@@ -12,7 +12,6 @@ const projectDataHandler = (() => {
 
   const displayProject = () => {
     const projectArr = localStorageFunctions.getAllItems("projectArr");
-    console.log(projectArr);
     if (projectArr) {
       insertProjectLinks(projectArr);
     } else {
@@ -20,7 +19,9 @@ const projectDataHandler = (() => {
     }
   };
 
-  const deleteProject = () => {};
+  const deleteProject = (id) => {
+    localStorageFunctions.deleteItemUsingId("projectArr", id);
+  };
 
   return { addProject, displayProject, deleteProject };
 })();

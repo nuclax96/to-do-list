@@ -10,7 +10,6 @@ import createTaskContainer from "./domHandler/main/addTaskModal";
 
 import {
   deleteTaskUsingId,
-  fillMainContainer,
   fillTaskContainer,
 } from "./domHandler/main/populateMain";
 import taskModalFunctions from "./domHandler/main/taskModalFunctions";
@@ -32,7 +31,6 @@ const taskControllerFunctions = (() => {
     taskEventsListener.taskModalListeners();
   };
   const closeTaskModal = () => {
-    console.log("Hello");
     taskModalFunctions.hideModal();
   };
   const taskSubmitController = () => {};
@@ -75,7 +73,6 @@ const taskControllerFunctions = (() => {
       const taskArr = taskDataHandler.getTask(getCurrentTabVar());
       fillTaskContainer(taskArr);
     } else {
-      console.log(getCurrentProjectIdVar());
       const taskArr = taskDataHandler.getTasksUsingProjectId(
         getCurrentProjectIdVar()
       );
@@ -119,15 +116,16 @@ const projectControllerFunction = (() => {
 
   const addProject = () => {
     const projectData = projectDataHandler.addProject();
-    console.log(projectData);
     // localStorageFunctions.clearLocalStorage("projectArr");
     localStorageFunctions.setLocalStorage("projectArr", projectData);
     // localStorageFunctions.getAllItems("projectArr");
     projectModalFunctions.clearProjectModalValues();
     // close the modal
     projectModalFunctions.hideModal();
+    clearContainer("projectsContainer");
     projectDataHandler.displayProject();
     taskEventsListener.newTaskEventListener();
+    projectEventListeners.projectNavListeners();
   };
 
   const closeProjectModal = () => {
@@ -147,6 +145,19 @@ const projectControllerFunction = (() => {
     projectEventListeners.projectNavListeners();
   };
 
-  return { addProject, showProjectModal, closeProjectModal, showProjectTasks };
+  const deleteProject = (id) => {
+    projectDataHandler.deleteProject(id);
+    clearContainer("projectsContainer");
+    projectDataHandler.displayProject();
+    projectEventListeners.projectNavListeners();
+  };
+
+  return {
+    addProject,
+    showProjectModal,
+    closeProjectModal,
+    showProjectTasks,
+    deleteProject,
+  };
 })();
 export { taskControllerFunctions, projectControllerFunction };

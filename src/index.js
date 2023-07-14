@@ -23,9 +23,7 @@ let currentProjectId = null;
 const changeCurrentTabVar = (val) => {
   currentTab = val;
 };
-const getCurrentTabVar = () => {
-  return currentTab;
-};
+const getCurrentTabVar = () => currentTab;
 
 const changeCurrentProjectIdVar = (val) => {
   currentProjectId = val;
@@ -38,7 +36,6 @@ const loadElements = () => {
   fillNav();
   fillMainContainer();
   fillProjectsContainer();
-  // createProject(projectsArr);
   createModal();
   // Task Modal
   createTaskContainer();
@@ -53,21 +50,14 @@ const initializeListeners = () => {
   taskEventsListener.taskListeners();
   taskEventsListener.taskModalListeners();
   taskEventsListener.navTaskListener();
-  //
 
   // Project Listeners
   projectEventListeners.addProjectBtn();
   projectEventListeners.projectNavListeners();
-
-  //
 };
 
 loadElements();
 initializeListeners();
-
-// setInterval(() => {
-//   console.log(currentTab, currentProjectId);
-// }, 2000);
 
 export {
   projectsArr,

@@ -3,7 +3,6 @@ const addClassToNavLink = (target, className) => {
 };
 
 const clearClassNavLink = (nodeList, className) => {
-  console.log(nodeList);
   nodeList.forEach((node) => {
     node.classList.remove(className);
   });

@@ -5,18 +5,22 @@ import {
   createButton,
   createImage,
 } from "../../helperFunctions/createHtmlEl";
-// import deleteProjectImgSrc from "../../../assets/delete_project.png";
+import deleteProjectImgSrc from "../../../assets/delete_project.svg";
+
 const insertProjectLinks = (projectsArr) => {
   const projectContatiner = document.querySelector(".projectsContainer");
+
   if (!projectsArr) return;
 
   projectsArr.forEach((item) => {
     const projectLink = createLink(item._name, "linkNav");
+    const projectLinkContainer = createDiv("projectLinkContainer");
+    const deleteProjectImg = createImage(deleteProjectImgSrc, "deleteProject");
     projectLink.classList.add("projectLink");
     projectLink.dataset.id = item._id;
-
-    // const deleteProjectImg = createImage(deleteProjectImgSrc, "deleteProject");
-    projectContatiner.append(projectLink);
+    deleteProjectImg.dataset.id = item._id;
+    projectLinkContainer.append(projectLink, deleteProjectImg);
+    projectContatiner.append(projectLinkContainer);
   });
 };
 

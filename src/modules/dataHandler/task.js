@@ -56,10 +56,8 @@ const taskDataHandler = (() => {
       case "Week":
         return taskArr.filter((item) => isThisWeek(parseISO(item._dueDate)));
       case "Important":
-        console.log("Show Important Task");
         break;
       case "Completed":
-        console.log("Show Completed Task");
         break;
       default:
     }

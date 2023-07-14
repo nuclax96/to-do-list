@@ -4,7 +4,6 @@ const taskModalFunctions = (() => {
     const taskCreateDate = document.querySelector("#taskCreateDate").value;
     const taskDueDate = document.querySelector("#taskDueDate").value;
     const taskProjectId = document.querySelector("#selectProject").value;
-    console.log(taskProjectId);
     return { taskName, taskCreateDate, taskDueDate, taskProjectId };
   };
 

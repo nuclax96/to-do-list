@@ -101,6 +101,7 @@ const projectEventListeners = (() => {
   const projectNavListeners = () => {
     const navProjectLinks = document.querySelectorAll(".projectLink");
     const taskStatusBtn = document.querySelectorAll(".taskStatusBtn");
+    const deleteProjectImg = document.querySelectorAll(".deleteProject");
 
     taskStatusBtn.forEach((btn) => {
       btn.addEventListener("click", (e) => {
@@ -110,6 +111,12 @@ const projectEventListeners = (() => {
     navProjectLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
         projectControllerFunction.showProjectTasks(e);
+      });
+    });
+
+    deleteProjectImg.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        projectControllerFunction.deleteProject(e.target.dataset.id);
       });
     });
   };

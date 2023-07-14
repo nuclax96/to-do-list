@@ -15,7 +15,6 @@ const localStorageFunctions = (() => {
       currentItem = [];
     }
     currentItem.push(obj);
-    console.log("Hello", currentItem);
     localStorage.setItem(itemName, JSON.stringify(currentItem));
   };
 
@@ -28,8 +27,8 @@ const localStorageFunctions = (() => {
     const updatedArr = currentItem.filter((item) => {
       if (item._id !== id) return item;
     });
-    localStorage.removeItem("taskArr");
-    localStorage.setItem("taskArr", JSON.stringify(updatedArr));
+    localStorage.removeItem(itemName);
+    localStorage.setItem(itemName, JSON.stringify(updatedArr));
   };
   const clearLocalStorage = (itemName) => {
     localStorage.removeItem(itemName);
